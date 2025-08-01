@@ -29,9 +29,8 @@ def AdamWOptimizer():
       v_hat = self.v[i] / (1 - self.beta2 ** self.t)
 
       # parameter update
-      update = self.learning_rate * m_hat / (v_hat ** (1/2) + self.epsilon)
-      self.params[i] -= update
-
+      self.params[i] -= self.learning_rate * m_hat / (v_hat ** (1/2) + self.epsilon)
+  
       # Weight decay
       if self.weight_decay > 0:
         self.params[i] -= self.learning_rate * self.weight_decay * self.params[i]
